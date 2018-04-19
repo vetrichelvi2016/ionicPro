@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=no, width=device-width, height=device-height, viewport-fit=cover">
+
+    <title></title>
+
+    <!-- compiled css output -->
+
+    <link href="css/ionic.app.css" rel="stylesheet" id="style1">
+    <link href="css/styles.min.css" rel="stylesheet" id="style2">
+   <!--<link href="css/styles.v3.less.dynamic.css" rel="stylesheet" id="style3">-->
+
+
+
+
+    <!-- ionic/angularjs js -->
+    <script type="text/javascript" src="scripts/idangerous.swiper.js"></script>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <!-- ng-cordova have to be before cordova -->
+    <script src="js/ng-cordova.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+   <!--  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en"></script> -->
+    <script type="text/javascript" src="scripts/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-ui-1.10.4.min.js"></script>
+
+    <script type="text/javascript" src="https://emerald.qa1.snapvcm.com/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script type="text/javascript" src="schedule/Scripts/signal/hubs.js"></script>
+
+
+    <!-- your app's js -->
+
+    <!--<script data-require="angular-animate.js@1.2.6" data-semver="1.2.6" src="http://code.angularjs.org/1.2.6/angular-animate.js"></script>-->
+    <script src="js/app.js"></script>
+
+    <script src="js/controller/controllers.js"></script>
+    <script src="js/controller/InterimController.js"></script>
+    <script src="js/controller/SSOJWTParsingController.js"></script>
+    <script src="js/controller/singleHospitalThemeCtrl.js"></script>
+    <script src="js/controller/intakeController.js"></script>
+    <script src="js/controller/patientCalendarController.js"></script>
+    <script src="js/controller/appoimentDetailsController.js"></script>
+    <script src="js/controller/waitingRoomController.js"></script>
+    <script src="js/controller/connectionLostController.js"></script>
+    <script src="js/controller/ConferenceController.js"></script>
+    <script src="js/controller/userAccountCtrl.js"></script>
+    <script src="js/controller/newuserController.js"></script>
+    <script src="js/controller/healthinfoController.js"></script>
+    <script src="js/controller/relateduserController.js"></script>
+    <script src="js/controller/patientdetailsController.js"></script>
+    <script src="js/controller/consultationController.js"></script>
+    <script src="js/controller/addnewuserController.js"></script>
+    <script src="js/controller/addnewdependentController.js"></script>
+
+    <script src="https://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+    <!--  <script src="schedule/schedule/kendo.all.js"></script>-->
+    <script src="schedule/Scripts/min/snap.core.min.js"></script>
+
+
+
+    <!-- Common -->
+    <script src="schedule/Scripts/common/contentLoader.js"></script>
+    <script src="schedule/Scripts/common/dialogWindow.js"></script>
+    <script src="schedule/Scripts/common/contentLoader.js"></script>
+    <script src="schedule/Scripts/common/endlessMVVMScroll.js"></script>
+    <script src="schedule/Scripts/common/endlessScroll.js"></script>
+    <script src="schedule/Scripts/common/helper.js"></script>
+    <script src="schedule/Scripts/common/itemSelector.control.js"></script>
+    <script src="schedule/Scripts/common/loadingStack.js"></script>
+    <script src="schedule/Scripts/common/patientAppointment.dialogWrapper.js"></script>
+    <script src="schedule/Scripts/common/scheduleCommon.js"></script>
+    <script src="schedule/Scripts/common/timer.js"></script>
+
+    <!--<script src="schedule/Scripts/common/timeUtils.js"></script>-->
+
+    <!-- Core -->
+    <script src="schedule/Scripts/core/accessUIChecker.js"></script>
+    <script src="schedule/Scripts/core/jquery.svgInject.js"></script>
+    <script src="schedule/Scripts/core/loadingcoremodule.js"></script>
+    <script src="schedule/Scripts/core/snap.controller.js"></script>
+    <script src="schedule/Scripts/core/snap.cookies.js"></script>
+    <script src="schedule/Scripts/core/snap.core.js"></script>
+    <script src="schedule/Scripts/core/snap.events.js"></script>
+    <script src="schedule/Scripts/core/snap.spamanager.js"></script>
+    <script src="schedule/Scripts/core/snapHttp.js"></script>
+    <script src="schedule/Scripts/core/snapNotification.js"></script>
+    <script src="schedule/Scripts/core/utility.js"></script>
+
+
+
+    <!-- Hub Main -->
+    <script src="schedule/Scripts/hubs/hubModel.js"></script>
+    <script src="schedule/Scripts/hubs/mainHub.js"></script>
+    <script src="schedule/Scripts/hubs/patientSelfSchedulingHub.js"></script>
+    <script src="schedule/Scripts/hubs/messengerHub.js"></script>
+    <script src="schedule/Scripts/hubs/serviceTypesHub.js"></script>
+    <script src="schedule/Scripts/hubs/notificationService.js"></script>
+    <script src="schedule/Scripts/hubs/sessionLimiterHub.js"></script>
+  <script src="schedule/schedule/snap.util.js"></script>
+
+  <script src="schedule/schedule/familyGroupSelector.js"></script>
+
+<script src="schedule/Scripts/viewModels/overlay.viewmodel.js"></script>
+
+<script src="schedule/Scripts/models/commonModels.js"></script>
+ <script src="schedule/Scripts/viewModels/reEnterConsultation.viewmodel.js"></script>
+
+    <!---End of HubMain -->
+
+
+    <script src="schedule/Scripts/min/patientSelfSchedule.min.js"></script>
+    <!--<script src="schedule/Scripts/common/snap.common.min.js?v=2178"></script>-->
+
+
+    <script src="schedule/Scripts/common/helper/location.helper.js"></script>
+    <script src="schedule/Scripts/common/helper/patientReEnterConsultation.helper.js"></script>
+
+    <script src="schedule/Scripts/common/helper/encounterMethod.helper.js"></script>
+    <script src="schedule/Scripts/common/scheduleEncounterMethodSelector.js"></script>
+<script src="schedule/Scripts/viewModels/scheduleItemSelector.viewmodel.js"></script>
+
+
+    <script src="schedule/schedule/familyGroupList.js"></script>
+
+
+
+
+
+
+
+  <script src="schedule/schedule/timeUtils.js"></script>
+  <script src="schedule/schedule/snap.enums.js"></script>
+
+  <script src="schedule/schedule/customerhome.new.viewmodel.js"></script>
+  <script src="schedule/schedule/apptSlotsTray.viewmodel.js"></script>
+  <script src="schedule/schedule/providerSearch.viewmodel.js"></script>
+  <script src="schedule/Scripts/viewModels/patientheader.viewmodel.js"></script>
+<script src="schedule/Scripts/snap.session.js"></script>
+<script src="schedule/Scripts/common/helper/rulesService.js"></script>
+
+  <script src="schedule/Scripts/schedular.common.min.js"></script>
+  <script src="schedule/Scripts/common/snap.common.min.js"></script>
+  <script src="https://emerald.qa1.snapvcm.com/Scripts/slick.min.js"></script>
+    <script src="schedule/schedule/snap.appUtils.min.js"></script>
+
+
+    <script src="schedule/Scripts/min/patientHome.min.js"></script>
+
+    <!-- dataSources  -->
+    <script src="schedule/Scripts/dataSources/appointmentWindow.datasource.js"></script>
+    <script src="schedule/Scripts/dataSources/codeSet.datasource.js"></script>
+    <script src="schedule/Scripts/dataSources/codeSetDataSourceCreator.js"></script>
+    <script src="schedule/Scripts/dataSources/consultationListing.datasource.js"></script>
+    <script src="schedule/Scripts/dataSources/snap.callDataSource.js"></script>
+
+
+    <script src="https://emerald.qa1.snapvcm.com/Scripts/pagevm/sharedvm/consultationsListing.viewmodel.js?v=1737"></script>
+    <script src="schedule/Scripts/viewModels/patient/patientResponseAddressDialog.viewmodel.js"></script>
+      <script src="schedule/Scripts/viewModels/patient/patientProfileListing.viewodel.js"></script>
+    <script src="schedule/Scripts/viewModels/patient/accountsettings.viewmodel.js"></script>
+    <script src="schedule/Scripts/viewModels/patient/appointmentInProgressDialog.viewmodel.js"></script>
+    <script src="schedule/Scripts/viewModels/patient/patientprofile.viewmodelLoader.js"></script>
+  <script src="schedule/Scripts/services/patientdataservice.js"></script>
+
+
+
+
+    <script src="js/controller/schedule.js"></script>
+    <!--  <script src="js/scheduleRouter.js"></script>-->
+
+
+    <!-- <script src="js/controller/healthsearchController.js"></script>-->
+
+    <script src="js/services.js"></script>
+    <script src="js/controller/searchProviderController.js"></script>
+    <script src="js/controller/registerStep1Controller.js"></script>
+    <script src="js/controller/registerStep2Controller.js"></script>
+    <script src="js/controller/videoConnectionLostController.js"></script>
+
+    <script src="js/opentok.js"></script>
+    <script src="js/Insomnia.js"></script>
+
+    <!--<script src="js/offline.min.js"></script>
+ <link href="js/offline-theme-default.css" rel="stylesheet" type="text/css" />
+ <link href="js/offline-language-english.css" rel="stylesheet" type="text/css" />-->
+
+    <script src="scripts/angular-touch.js"></script>
+    <script src="scripts/spin.min.js"></script>
+    <script src="scripts/angular-spinner.min.js"></script>
+    <script src="scripts/angular-loading-spinner.js"></script>
+    <!--<script src="lib/ionic/js/angular/ionic-angular.min.js"></script>-->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular-touch.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-messages.min.js"></script>
+	-->
+
+
+
+
+
+
+    <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link href="css/Icomoon/style.css" rel="stylesheet" type="text/css" />-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="css/animated-notifications.css" rel="stylesheet" type="text/css" />
+
+    <link href="lib/ion-google-place/ion-google-place.css" rel="stylesheet" type="text/css" />
+    <!--<script type="text/javascript" src="scripts/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui-1.10.4.min.js"></script>-->
+
+    <script type="text/javascript" src="lib/angular-timer/app/js/_timer.js"></script>
+    <script type="text/javascript" src="lib/angular-timer/app/js/i18nService.js"></script>
+    <script type="text/javascript" src="lib/humanize-duration/humanize-duration.js"></script>
+    <script type="text/javascript" src="lib/momentjs/moment.js"></script>
+    <script type="text/javascript" src="lib/momentjs/min/locales.js"></script>
+    <script type="text/javascript" src="lib/ng-idle/angular-idle.js"></script>
+    <script type="text/javascript" src="lib/ng-idle/angular-idle.min.js"></script>
+    <script type="text/javascript" src="lib/ion-google-place/ion-google-place.js"></script>
+    <script src="lib/jquery-2.1.3.js"></script>
+   <script src="lib/jquery.signalR-2.1.2.js"></script>
+
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="scripts/jquery.runner.js"></script>
+   <!--  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJbOzLwTA2o1otQz6wToqa-IHG3wo48ZY&sensor=false&libraries=places"></script> -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
+      <!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script> -->
+      <!-- <script src="http://jvandemo.github.io/angularjs-google-maps/dist/angularjs-google-maps.js"></script> -->
+
+
+
+
+ <!-- <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
+    <script src="/node_modules/angular/angular.js"></script>
+        <script src="/node_modules/angular-aria/angular-aria.js"></script>
+        <script src="/node_modules/angular-animate/angular-animate.js"></script>
+        <script src="/node_modules/angular-material/angular-material.js"></script> -->
+       <!-- Angular Material requires Angular.js Libraries -->
+
+  <!--  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+
+       <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+       <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+       <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>-->
+        <!-- Angular Material style sheet -->
+        <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">-->
+
+    <!--<script src='https://sandbox.connectedcare.md/api/signalR/hubs'></script>-->
+    <!-- <script src='https://snap-qa.com/api/signalR/hubs'></script> -->
+    <!--<script src='https://connectedcare.md/api/signalR/hubs'></script>-->
+    <!-- <script src='https://snapmd-api.azurewebsites.net/signalR/hubs'></script> -->
+
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular-touch.js"></script>-->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--<script type="text/javascript" src="scripts/animated-notifications.js"></script>-->
+
+
+    <!-- Start Date Picker -->
+    <!--<link href="datepicker/angular-pickadate.css" rel="stylesheet"> -->
+    <!-- <link href="http://code.ionicframework.com/0.9.27/css/ionic.min.css" rel="stylesheet">
+    <link href="datepicker/angular-pickadate.css" rel="stylesheet">
+    -->
+    <!--  <script src="http://code.ionicframework.com/0.9.27/js/ionic.bundle.min.js"></script>-->
+
+    <!-- End Date Picker -->
+
+    <script src="https://global.localizecdn.com/localize.js"></script>
+      <script>!function(a){if(!a.Localize){a.Localize={};for(var e=["translate","untranslate","phrase","initialize","translatePage","setLanguage","getLanguage","detectLanguage","getAvailableLanguages","untranslatePage","bootstrap","prefetch","on","off"],t=0;t<e.length;t++)a.Localize[e[t]]=function(){}}}(window);</script>
+
+      <script>
+    Localize.initialize({
+          key: 'PuAKCcswPixvg',
+          rememberLanguage: true,
+          saveNewPhrases: true,
+          enhancedContentSecurity: true,
+          translateBody: false
+    });
+      </script>
+
+
+</head>
+
+<body ng-app="starter" animation="slide-left-right-ios7">
+
+    <span style="top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 90000; opacity: 0.5; position: absolute;" us-spinner="{radius:8, width:4, length: 8}"></span>
+
+    <!--
+      The nav bar that will be updated as we navigate between views.
+
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>-->
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+</body>
+<script defer src="svgxuse.js"></script>
+
+<script id="patientSelector_item" type="text/x-kendo-template">
+    <div class="directory__item js-patient" id="cs_#= id #">
+        <div class="directory__userpic userpic userpic--is-available js-view-patient-profile">
+            <img src="#= imageSource #" onerror="this.onerror=null;this.src='/images/default-user.jpg';" alt="" />
+        </div>
+        <div class="directory__info">
+            <div class="directory__info-name">#= name #</div>
+            <div class="directory__info-mail">#= info #</div>
+        </div>
+        <div class="directory__checkbox">
+            <div class="checkbox checkbox-round">
+                <span class="checkbox__control"></span>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="noPatientFound" type="text/x-kendo-template">
+    <div class="dialogbox__empty-state" >
+        <span class="icon_user"></span>
+        <p>No Patient found.</p>
+    </div>
+</script>
+
+
+<script id="clinicianCardDSTemplate" type="text/x-kendo-template">
+    <div>
+        <div id="#= vm_htmlContainerId #"
+            data-bind="source: vm_allItems"
+            data-template="clinicianCardTemplate">
+        </div>
+
+        <div class="loader loader--grey" data-bind="css: {is-active: vm_isItemsLoading}"></div>
+    </div>
+</script>
+
+<script id="clinicianCardTemplate" type="text/x-kendo-template">
+    <div class="drawer-card drawer-card--provider drawer-card--available
+        #if(data.vm_isSelected){# is-active #}#
+        #if(data.isFooterActive){# is-footer-active #}#
+        #if(data.isContentActive){# is-content #}#
+        #if(data.isFavorite){# is-bookmarked #}#
+        #if(data.apptsSlotsTray.vm_isEmpty()){# drawer-card--appointment-request#}#
+        #if(data.vm_isGridMode()){# drawer-card--vertical #}#
+        "
+        id="#: 'card_' + data.vm_cardId #"
+        data-bind = "css: {
+            drawer-card--appointment-request: apptsSlotsTray.vm_isEmpty,
+            is-active: vm_isSelected,
+            is-footer-active:  isFooterActive,
+            is-content: isContentActive,
+            is-bookmarked: isFavorite,
+            drawer-card--vertical: vm_isGridMode
+        }"
+    >
+        <div class="drawer-card__container">
+            <div class="drawer-card__arrow"></div>
+
+            <div class="drawer-card__back"
+                data-bind= "events: { click: vm_toggleContent }">
+                <div class="icon_reply"></div>
+            </div>
+
+            <div class="drawer-card__main">
+                <div class="drawer-card__card">
+                    <div class="drawer-card__userpic">
+                        <button type="button" class="drawer-card__user-info"
+                            data-bind= "events: { click: vm_toggleContent }">
+                            <span class="icon_info"></span>
+                        </button>
+
+                        <div class="userpic userpic--drawer-card
+                            #if(data.apptsSlotsTray.vm_isEmpty()){# userpic--is-empty #}else{# userpic--is-available #}#"
+                            data-bind= "events: { click: vm_toggleContent } ">
+                            <img data-bind="attr:{src: photo}" alt="">
+                        </div>
+
+                        <div class="drawer-card__chevron"></div>
+                    </div>
+
+                    <button tyle="button" class="drawer-card__sub-action js-toggle-bookmark" data-bind="click: vm_toggleFavorite">
+                        <div class="drawer-card__bookmark">
+                            <div class="icon_star"></div>
+                        </div>
+                    </button>
+
+                    <div class="drawer-card__info" style="flex-wrap: wrap"
+                        data-bind= "events: { click: vm_toggleContent }">
+                        <div class="drawer-card__name localizejs" data-bind="text: vm_getFullName">
+                        </div>
+
+                        <div class="drawer-card__secondary-info localizejs" data-bind="text: speciality">
+                        </div>
+
+                        <div class="drawer-card__tertiary-info" >
+                            <span data-bind="text: subSpeciality" class="localizejs"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="drawer-card__content"
+                    data-bind="visible: isContentActive">
+                    <div class="drawer-info-panel">
+
+                        <div class="drawer-info-panel__cell drawer-info-panel__cell--practicing">
+                            <div class="drawer-info-panel__header localizejs">Practicing</div>
+                              <div class="drawer-info-panel__content">
+                                <span data-bind="text: vm_getPracticingYears"></span>
+                                <span class="localizejs" data-bind="text: vm_getPracticingYearsString"></span>
+                            </div>
+                        </div>
+
+                        <div class="drawer-info-panel__cell drawer-info-panel__cell--gender">
+                            <div class="drawer-info-panel__header localizejs">Gender</div>
+                            <div class="drawer-info-panel__content"><span data-bind="text: vm_getGenderText" class="localizejs">Female</span></div>
+                        </div>
+
+                        <div class="drawer-info-panel__cell drawer-info-panel__cell--age">
+                            <div class="drawer-info-panel__header localizejs">Age</div>
+                            <div class="drawer-info-panel__content"><span  data-bind="ageString: dob"></span>
+                                <span class="localizejs" data-bind="ageStringVal: dob">
+                            </div>
+                        </div>
+
+                        <div class="drawer-info-panel__cell drawer-info-panel__cell--states">
+                            <div class="drawer-info-panel__header localizejs">States Licensed</div>
+                            <div class="drawer-info-panel__content drawer-info-panel__country-container" data-template="country-template" data-role="listview" data-bind="source: statesLicensed"></div>
+                        </div>
+
+                        <div class="drawer-info-panel__cell drawer-info-panel__cell--address">
+                            <div class="drawer-info-panel__header localizejs">Address</div>
+                            <div class="drawer-info-panel__content"><span data-bind="text: address">121 Lexington Ave Glendale, CA 91203</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="drawer-card__footer">
+                    <div
+                        class="drawer-card__footer-toggler"
+                        data-bind = "events: { click: vm_toogleFooter }">
+
+                        <span data-bind="invisible: apptsSlotsTray.vm_isEmpty" class="localizejs">Available Times</span>
+                        <span data-bind="visible: apptsSlotsTray.vm_isEmpty, html: apptsSlotsTray.vm_getNextApptSlotInfo" class="localizejs"></span>
+                    </div>
+
+                    <button type="button" class="drawer-card__action"
+                        data-bind="visible: apptsSlotsTray.vm_hasSlotsForRightNow, events: { click: vm_onConnectNowClick}">
+                        <div class="localizejs">Connect Now</div>
+                    </button>
+
+                    <div class="drawer-card__footer-content"
+                        data-bind="source: apptsSlotsTray, visible: isFooterActive"
+                        data-template="apptsSlotsTemplate1">
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <div class="drawer-card__footer-flip">
+            <div
+                class="drawer-card__footer-back"
+                data-bind = "events: { click: vm_toogleFooter }" >
+                <div class="icon_reply"></div>
+            </div>
+
+            <div class="drawer-card__name">
+                <span data-bind="text: vm_getFullName localizejs"></span>
+                <span style='font-family: "GloberRegular","Helvetica Neue",Helvetica,Arial,Sans-Serif;' class="localizejs"
+                    data-bind="text: speciality"></span>
+            </div>
+
+            <div class="drawer-card__footer-flip-label localizejs">
+                Select a Time
+            </div>
+
+            <div class="drawer-card__footer-flip-card"
+                data-bind="source: apptsSlotsTray"
+                data-template="apptsSlotsTemplate2">
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="apptsSlotsTemplate1" type="text/x-kendo-template">
+    <div>
+        <div class="drawer-card__slider js-footer-slider"
+            data-bind="source: vm_slots"
+            data-template="apptSlotTemplate">
+        </div>
+    </div>
+</script>
+
+<!-- <script>
+var viewModel = kendo.observable({
+    isChecked: false
+});
+
+kendo.bind($("input"), viewModel);
+</script> -->
+
+<script id="apptsSlotsTemplate2" type="text/x-kendo-template">
+    <div>
+        <div class="drawer-card__footer-flip-slider js-flip-slider"
+            data-bind="source: vm_slots"
+            data-template="apptSlotTemplate">
+        </div>
+    </div>
+</script>
+
+<script id="apptSlotTemplate" type="text/x-kendo-template">
+    <div data-bind = "css: { is-selected : vm_isInvisible }" >
+        <button type="button" class="drawer-card__appointment-action localizejs" style="font-size: 21px;" data-bind="events: {click: vm_onSlotClick }, html: formatedTime" ></button>
+    </div>
+</script>
+
+<script id="filterCathegoryTemplate" type="text/x-kendo-template">
+    <div class="panel-filter__block">
+        <div
+            class="panel-filter__title #if(data.isCathegoryOpen) {# is-open #}#"
+            data-bind="events: {click: vm_onCathegoryToogle}, css: {is-open: isCathegoryOpen}">
+            <span data-bind="text: cathegoryName" class="localizejs"> </span>
+            <div type="button" class="panel-filter__arrow">
+                <span class="icon_chevron-small-down"></span>
+            </div>
+        </div>
+
+        <div class="panel-filter__list" style="display: #if(data.isCathegoryOpen) {# block #} else {# none #}#"
+            data-bind="source: cathegoryFiltersList, slide: isCathegoryOpen" data-template="filterTemplate">
+        </div>
+    </div>
+</script>
+<script type="text/x-kendi-template" id="filterTemplate">
+    <label class="panel-filter__item" data-bind="visible: vm_showFilter">
+        <div class="panel-filter__caption localizejs">
+           <span data-bind="text: filterName" class="localizejs"></span>
+           <span data-bind="text: vm_getFilterQuantity, visible: vm_showFilterQuantity"></span>
+        </div>
+        <div class="panel-filter__checkbox">
+            <div class="checkbox">
+                <input type="checkbox" tabindex="3" id="myCheck" indeterminate="false" data-bind="checked: isFilterChecked, events: {click: vm_onCheckedStateChange}" abindex="3">
+                <span class="checkbox__control" class="localizejs"></span>
+            </div>
+        </div>
+    </label>
+</script>
+
+<script id="country-template" type="text/x-kendo-template">
+    <div class="drawer-info-panel__country">
+        <span class="drawer-info-panel__country-flag"><img src='images/countries/flags/#: data.countryCode #-32.png'></span>
+        <span class="drawer-info-panel__country-states"> #: data.states #</span>
+    </div>
+</script>
+
+<script id="scrollableItem" type="text/x-kendo-template">
+    <div class="directory__item" data-bind = "css: {is-disabled: isDisabled}, events: {click : onSelectClick}, invisible: isSelected">
+        <div class="directory__userpic userpic userpic--is-available" data-bind="events: {click: onViewProfileClick}, css: { default-user :isDefault}"><img data-bind="attr: { src: imageSource }"/></div>
+
+        <div class="directory__info">
+            <div class="directory__info-name" data-bind="text: name"></div>
+            <div class="directory__info-mail" data-bind="text: info, attr: {title: info}"></div>
+        </div>
+    </div>
+</script>
+<script id="scrollableSelectedItem" type="text/x-kendo-template">
+    <div class="directory__item">
+        <div class="directory__userpic userpic userpic--is-available" data-bind="events: {click: onViewProfileClick}, css: { default-user :isDefault}"><img data-bind="attr: { src: imageSource }"/></div>
+
+        <div class="directory__info">
+            <div class="directory__info-name" data-bind="text: name"></div>
+            <div class="directory__info-mail" data-bind="text: info, attr: {title: info}"></div>
+        </div>
+        <div class="directory__checkbox" data-bind="visible:isSelected">
+            <div class="checkbox checkbox-round">
+                <input type="checkbox" checked>
+                <span class="checkbox__control"></span>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="patient_itemSelector_item" type="text/x-kendo-template">
+    <div class="dialogbox-master__user">
+        <div class="dialogbox-master__owner" data-bind="css: {dialogbox-master__owner--is-opacity: isDisabled, is-locked:isSelectorLocked}, attr: {id: vm_nodeId}">
+            <div class="userpic" data-bind="events: {click: onViewProfileClick}, css: { default-user :isDefault, userpic--warning: isDisabled}">
+                <img  data-bind="attr: { src: imageSource }" onerror="this.onerror=null;this.src='/images/default-user.jpg';">
+            </div>
+            <div class="dialogbox-master__userinfo">
+                <span class="dialogbox-master__name" data-bind="text: name"></span>
+                <span class="dialogbox-master__phone" data-bind="text: info, attr: {title: info}"></span>
+            </div>
+
+            <span class="icon_chevron-with-circle-right"></span>
+        </div>
+        <div class="dialogbox-master__time-offset dialogbox-master__time-offset--bottom" data-bind="css: {is-active: isTimeOffsetsVisible}, text: vm_TimeText"></div>
+    </div>
+</script>
+
+<script id="patient_itemSelector" type="text/x-kendo-template">
+    <div>
+        <!-- This div necessary for kendo template engine -->
+        <div class="directory__opener" tabindex="1" data-bind="source: vm_getSelectedItemOrDefault, events: {click: vm_openItemsSelector}, class: {is-locked:isSelectorLocked}"
+             data-template="patient_itemSelector_item">
+        </div>
+
+        <div class="directory directory--consultation" data-bind="invisible: isSelectorLocked, css: {is-active: isItemsSelectorVisible, is-loading: vm_isItemsLoading}">
+            <div class="directory__titlebar">
+                <span class="localizejs" data-bind="text: vm_userTrayHeaderText">Directory</span>
+                <button class="localizejs button directory__button" data-bind="events: {click: vm_hideItemsSelector}">Done</button>
+            </div>
+
+            <div class="directory__main">
+                <div class="directory__filter">
+
+                    <div class="directory__search">
+                        <div class="search">
+                            <span class="icon_magnifying-glass"></span>
+                            <input class="nameFilterField" type="text" placeholder="Enter Your Search"
+                                data-bind="events: { keyup: vm_nameFilterChange }, value: nameFilter"
+                                data-value-update="keyup">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="directory__selected-item"
+                    style= "max-height: 72px"
+                    data-bind="source: vm_getSelectedItems"
+                    data-template="scrollableSelectedItem"
+                ></div>
+
+                <div class="directory__list itemSelector_scrollable">
+                    <div class="directory__items-wrap" data-bind="attr: {id: vm_listId}, source: vm_allItems, invisible: vm_isItemsListEmpty"
+                        data-template="scrollableItem"
+                    ></div>
+
+                    <div class="localizejs directory__empty-state" data-bind="visible: vm_isItemsListEmpty">
+                        <span class="icon_user"></span>
+                        <p>No users match your search</p>
+                    </div>
+
+                    <div class="loader loader--grey loader--small is-active"  data-bind="visible: vm_isItemsLoading" style="z-index: 100" ></div>
+                </div>
+            </div>
+        </div>
+</script>
+
+<script id="patient_apptsSlotsTemplate" type="text/x-kendo-template">
+    <div class="drawer-card__slider js-footer-slider"
+        data-bind="source: vm_slots"
+        data-template="patient_apptSlotTemplate"></div>
+</script>
+
+
+<script id="patient_apptSlotTemplate" type="text/x-kendo-template">
+    <div data-bind = "css: { is-selected : vm_isInvisible" >
+        <button type="button" class="drawer-card__appointment-action" data-bind="events: {click: vm_onSlotClick }, html: formatedTime" ></button>
+    </div>
+</script>
+
+<script id="encounterSelectorTemplate" type="text/x-kendo-template">
+    <div>
+        <div class="dialogbox-master__subtitle">Encounter Method</div>
+        <div class="consultation-type" data-bind="css:{is-disabled: vm_isReadOnly}">
+            <div class="consultation-type__list" data-bind="source: vm_methods" data-template="encounterMethodTemplate">
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<script id="encounterMethodTemplate" type="text/x-kendo-template">
+    <div class="consultation-type__item"
+        data-bind="
+            onEnterKey: vm_onSelect,
+            click: vm_onSelect,
+            css: {is-active: vm_isSelected, is-disabled: vm_isHidden, is-disabled-view: vm_isDisabled }">
+        <div class="consultation-type__icon" tabindex="5">
+            <span class="icon_video_camera"
+                data-bind="css: {icon_video_camera: vm_isVideoType, icon_phone: vm_isPhoneType, icon_chat: vm_isChatType, icon_users: vm_isInPersonType}">
+            </span>
+        </div>
+        <div class="consultation-type__title">#: name#</div>
+    </div>
+</script>
+
+<script>
+/*Localize.on('setLanguage', function (data) {
+  console.log('hhh');
+               var culture = "en-US";
+               if (data.to == 'es') {
+                   culture = 'es-ES'
+               } else if (data.to == 'en-GB') {
+                   culture = 'en-GB'
+               } else {
+                   culture = 'en-US'
+               }
+               snap.culture = culture;
+               kendo.culture(culture);
+               snap.datepickers.initializeDatePickerCalture();
+           });*/
+</script>
+
+<script>
+/*window.addEventListener('native.keyboardshow', function() {
+   $("#localize-widget").hide();
+
+});
+window.addEventListener('native.keyboardhide', function() {
+   $("#localize-widget").show();
+});*/
+// $('input').on('focus', function() {
+//   console.log('input focus:', new Date().getTime());
+// });
+</script>
+
+</html>
+
+<!--
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link href="_css/Icomoon/style.css" rel="stylesheet" type="text/css" />
+<link href="_css/animate.css" rel="stylesheet" type="text/css" />
+<link href="_css/animated-notifications.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="_scripts/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="_scripts/jquery-ui-1.10.4.min.js"></script>
+<script type="text/javascript" src="_scripts/animated-notifications.js"></script>
+-->

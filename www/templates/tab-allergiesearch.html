@@ -1,0 +1,43 @@
+<div class="modal" >
+   <ion-view>
+      <header class="bar bar-header bar-dark concernListHeader" style="{{PrimaryConcernPopupH}}; background-color:{{brandColor}};border-color:{{brandColor}};{{backgroundimage}};">
+         <div class="ErrorMessage ErrorMessageDiv"  ></div>
+         <!-- <button class="button button-clear {{concernListDoneStyle}} localizejs" style="{{PriorSurgeryPopupCancel}};" ng-click="removemodal()" >Cancel</button>
+         <h1 class="title {{concernListTitleStyle}} localizejs" style="{{PrimaryConcernPopupTitle}}; ">My Health</h1>
+         <button class="button button-clear {{concernListDoneStyle}} localizejs" style="{{PrimaryConcernPopupDone}};" ng-click="allergiedone()" >Done</button> -->
+         <div ng-click="removemodal()" class="leftHeaderIcon"><i class="addBtn" ng-bind-html="drawSVGCIcon('cross')"></i></div> 
+         <h1 class="title {{concernListTitleStyle}} localizejs" style="{{PrimaryConcernPopupTitle}};">My Health</h1>
+         <div ng-click="allergiedone()" class="rightHeaderIcon"><i class="addBtn" ng-bind-html="drawSVGCIcon('check')"></i></div> 
+      </header>
+      <ion-content has-header="true" class="concernListContent">
+         <ion-list>
+            <ion-item class="search_home  concernListSearch">
+               <h2 class="subname subName-{{deviceName}} localizejs">Medication Allergies</h2>
+               <div class=" searchbox" style="margin-top: 0px!important;">
+                  <div class="item-input-inset" style="margin-top: 0px!important;margin-bottom: 0px!important;">
+                     <label class="item-input-wrapper">
+                     <i style="display: {{iconDisplay}}" ng-bind-html="drawSVGCIcon('magnifying-glass')" class="inputsearchtext"></i>
+                     <input type="search"  placeholder="Search" ng-model="data.searchProvider" class="inputsearchtext localizejs">
+                     </label>
+                  </div>
+               </div>
+               <div class="srchlist">
+                  <div ng-repeat="(letter, medicationAllergiesearchList) in sorted_usersallergie">
+                     <ion-checkbox id="index_{{letter}}" ng-repeat="allergie in filterAllergies=( medicationAllergiesearchList | filter: data.searchProvider)"
+                        ng-model="allergie.checked"
+                        ng-checked="allergie.checked" ng-change="OnSelectAllergies(allergie)" ng-disabled="checkedAllergies==limit && !allergie.checked" >
+                        <span class="ng-binding concernListDetails localizejs" >   {{ allergie.text }} </span>
+                     </ion-checkbox>
+                  </div>
+               </div>
+            </ion-item>
+            <ion-item  ng-show="(medicationAllergiesearchList | filter:data.searchProvider).length==0" class="noResult localizejs" style="white-space: normal;">Sorry No Result Found!</ion-item>
+         </ion-list>
+         <ul class="alpha_sidebar localizejs" ng-show="(medicationAllergiesearchList | filter:data.searchProvider).length!=0">
+            <li ng-click="gotoallergyList('index_{{letter}}')"ng-repeat="letter in alphabets">
+               {{letter}}
+            </li>
+         </ul>
+      </ion-content>
+   </ion-view>
+</div>

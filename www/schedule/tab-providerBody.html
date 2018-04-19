@@ -1,0 +1,431 @@
+<style>
+span.k-picker-wrap.k-state-default {
+    top: -4px;
+    border-right: 0;
+}
+</style>
+<div id="scd-bdy">
+    <div class="notification-bar notification-bar--provider-search notification-bar--success" data-bind="css:{is-active:vm_isNotificationActive}">
+        <span class="notification-bar__icon icon_confirm"></span>
+        <span class="notification-bar__title localizejs">Appointment Created!</span>
+        <span class="notification-bar__desc notification-bar__link localizejs" data-bind="click:vm_goToCalendar">Click here to go to your calendar.</span>
+        <button class="notification-bar__close" data-bind="click:vm_closeNotification"><span class="icon_cross"></span></button>
+    </div>
+
+    <div id="searchFilter" class="col5-sm col16-md-5 col16-lg-4 left-col provider-search-page__left-col" data-bind="css:{is-active: vm_isSearchBarActive, is-notification: vm_isNotificationActive}">
+        <div class="provider-search-panel">
+            <div class="provider-search-panel__search">
+                <div class="search__container">
+                    <div class="search">
+                        <span class="icon_magnifying-glass"></span>
+                        <input type="text" class="localizejs" placeholder="Find providers by name" data-bind="events: { keyup: vm_onNameFilterChange }, value: nameFilter" data-value-update="keyup">
+                    </div>
+                </div>
+            </div>
+
+            <div class="provider-search-panel__wrap">
+                <div class="loader loader--grey loader--small" data-bind="css: {is-active: vm_isPatinetLoactionInLoading } " style="z-index: 100"></div>
+                <div class="loader loader--grey loader--small" id="providersearchBdy" data-bind="css: {is-active: vm_isItemsLoading } " style="z-index: 100"></div>
+
+                <div class="provider-search-panel__title js-sticky-header localizejs">DATE</div>
+
+                <div class="provider-search-panel__box">
+                    <div class="provider-search-panel__datepicker">
+                        <input id="dateFilterPiker" data-role="datepicker" data-bind="value: dateFilter, events: { change: vm_onDateFilterChange, open: vm_onDateFilterOpen }">
+                    </div>
+                </div>
+
+                <div class="provider-search-panel__title js-sticky-header localizejs">PERSON</div>
+
+                <div class="provider-search-panel__box">
+                    <div class="provider-search-person">
+                        <div class="provider-search-person__box provider-search-person__box--person" data-bind="events: { click: vm_onSelectPersonClick}">
+                            <div class="provider-search-person__userpic">
+                                <div class="userpic userpic--person userpic--no-view-profile">
+                                    <img data-bind="attr: { src: selectedPatient.imageSource }" onerror="this.onerror=null;this.src='images/default-user.jpg';" alt="">
+                                </div>
+                            </div>
+                            <div class="provider-search-person__name" data-bind="html: selectedPatient.name">
+
+                            </div>
+                            <div class="provider-search-person__arrow">
+                                <span class="icon_chevron-right"></span>
+                            </div>
+                        </div>
+                        <div class="provider-search-person__box provider-search-person__box--location" data-bind="visible: vm_isRulesActive, events: { click: vm_onConfirmCurrentLocationClick }, css: {is-readonly: vm_isResponseRuleInactive}">
+
+                            <div class="provider-search-person__label localizejs">Current Location</div>
+                            <div class="provider-search-person__location" data-bind="html: vm_currentPatientLocation"></div>
+                            <div class="provider-search-person__arrow" data-bind="visible: isResponseRuleActive">
+                                <span class="icon_chevron-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="provider-search-panel__title js-sticky-header localizejs">
+                    PROVIDER FILTER
+                    <button class="localizejs" type="button" data-bind="click: vm_onClearAllClick, visible: vm_isClearFiltersVisible">Clear All</button>
+                </div>
+
+                <div class="provider-search-panel__box">
+                    <div class="panel-filter" data-bind="source: vm_getActiveFilters" data-template="filterCathegoryTemplate">
+                    </div>
+                </div>
+
+                <div id="relatedUsrTab" class="directory directory--selfscheduling" data-bind="css: {is-active: vm_isPatientSelectorActive}">
+                    <div class="directory__titlebar">
+                        <span class="localizejs">Related Users</span>
+                        <button class="button directory__button localizejs" data-bind="events: {click: vm_closePatientSelection}">Done</button>
+                    </div>
+                    <div class="directory__main">
+                        <div class="directory__filter">
+
+                            <div class="directory__search">
+                                <div class="search search--big">
+                                    <span class="icon_magnifying-glass"></span>
+                                    <input type="text" class="localizejs" placeholder="Find people by name" data-bind="events: { keyup: vm_onPatientsNameFilterChange }, value: vm_patientsNameFilter" data-value-update="keyup">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="directory__list familyGroupSelector_scrollable">
+                            <div class="directory__items-wrap" id="selectFamilyMember">
+                            </div>
+
+                            <div class="loader loader--grey loader--small is-active" style="z-index: 100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col5-sm col16-md-11 col16-lg-12 right-col provider-search-page__right-col" data-bind="css:{is-notification: vm_isNotificationActive}">
+        <div>
+            <div class="provider-search-page__container">
+                <div class="provider-search-header">
+                    <div class="provider-search-header__results" data-bind="text: vm_getPagingCount">
+                    </div>
+
+                    <div class="provider-search-header__date">
+                        <div class="provider-search-header__date-wrap">
+                            <a data-bind="events: { click: vm_onDateBack }, visible: vm_onDateBackVisible" class="provider-search-header__date-back">
+                                <span class="icon_chevron-thin-left"></span>
+                            </a>
+                            <div class="provider-search-header__date-inner">
+                                <span class="localizejs" data-bind="text: vm_getDateDay"></span>, <span data-bind="text: vm_getDateFormatted" class="localizejs"><span class="localizejs">December</span> 22, 2016</span>
+                            </div>
+                            <a data-bind="click: vm_onDateForvard" class="provider-search-header__date-forward">
+                                <span class="icon_chevron-thin-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="provider-search-header__search">
+                        <div class="search">
+                            <span class="icon_magnifying-glass"></span>
+                            <input type="text" class ="localizejs" placeholder="Find providers by name" data-bind="events: { keyup: vm_onNameFilterChange }, value: nameFilter" data-value-update="keyup">
+                        </div>
+                    </div>
+
+                    <div class="provider-search-header__toggle-info" data-bind="events: { click : vm_toogleAllContents }">
+                        <button type="button">
+                            <span class="provider-search-header__tooltip" style="z-index: 2"
+                                data-bind="html: vm_toogleAllCardsContentIconText">
+                            </span>
+                            <span class="icon_info-with-circle"></span>
+                        </button>
+                    </div>
+
+                    <div class="provider-search-header__time  js-toggle-all-content" data-bind="events: { click : vm_toogleAllFooters }">
+                        <button type="button">
+                        <span class="provider-search-header__tooltip" style="z-index: 2"
+                            data-bind="html: vm_toogleAllCardsFooterIconText">
+                            </span>
+                            <span class="icon_clock"></span>
+                        </button>
+                    </div>
+
+                    <div class="provider-search-header__view" data-bind="css: {is-active: vm_isListMode}, events: { click: vm_onListModeClick}">
+                        <button type="button" class="js-set-horizontal">
+                            <span class="icon_list"></span>
+                        </button>
+                    </div>
+                    <div class="provider-search-header__view" data-bind="css: {is-active: vm_isGridMode}, events: { click: vm_onGridModeClick}">
+                        <button type="button" class="js-set-vertical">
+                            <span class="icon_grid2"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="provider-search-page__content" data-bind="visible: vm_isFavoriteCliniciansMode,
+                        css: {provider-search-page__content--grid: vm_isGridMode}">
+                    <div data-bind="source: favoriteCliniciansDS" data-template="clinicianCardDSTemplate">
+                    </div>
+
+                    <div data-bind="visible: vm_isFavoriteCliniciansDSEmpty">
+                        <div data-bind="invisible: vm_hasSearchConditions" class="localizejs">
+                            <div class="drawer-card drawer-card--provider drawer-card--empty localizejs">
+
+                                <div class="drawer-card__container localizejs">
+
+                                    <div class="drawer-card__back js-toggle-content localizejs">
+                                        <div class="icon_reply"></div>
+                                    </div>
+
+                                    <div class="drawer-card__main">
+                                        <div class="drawer-card__card">
+                                            <div class="drawer-card__userpic localizejs">
+
+                                                <div class="userpic userpic--drawer-card userpic--is-empty">
+                                                    <img src="images/default-user.jpg" alt="">
+                                                </div>
+
+                                            </div>
+
+                                            <button tyle="button" class="drawer-card__sub-action js-toggle-bookmark">
+                                                    <div class="drawer-card__bookmark localizejs" >
+                                                        <div class="icon_star"></div>
+                                                    </div>
+                                                </button>
+
+                                            <div class="drawer-card__info js-toggle-content">
+                                                <div class="drawer-card__name localizejs"></div>
+                                                <div class="drawer-card__secondary-info localizejs"></div>
+                                            </div>
+                                        </div>
+
+
+                                        <footer class="drawer-card__footer">
+                                            <div class="drawer-card__footer-toggler js-toggle-footer localizejs"></div>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="drawer-card drawer-card--provider drawer-card--empty  is-active localizejs">
+
+                                <div class="drawer-card__container localizejs">
+
+                                    <div class="drawer-card__back js-toggle-content">
+                                        <div class="icon_reply"></div>
+                                    </div>
+
+                                    <div class="drawer-card__main">
+                                        <div class="drawer-card__card">
+                                            <div class="drawer-card__userpic localizejs">
+
+                                                <div class="userpic userpic--drawer-card userpic--is-empty">
+                                                    <img src="images/default-user.jpg" alt="">
+                                                </div>
+
+                                            </div>
+
+                                            <button tyle="button" class="drawer-card__sub-action js-toggle-bookmark">
+                                                <div class="drawer-card__bookmark localizejs">
+                                                    <div class="icon_star"></div>
+                                                </div>
+                                            </button>
+
+                                            <div class="drawer-card__info js-toggle-content">
+                                                <div class="drawer-card__name localizejs"></div>
+                                                <div class="drawer-card__secondary-info localizejs"></div>
+                                            </div>
+                                        </div>
+
+
+                                        <footer class="drawer-card__footer">
+                                            <div class="drawer-card__footer-toggler js-toggle-footer localizejs"></div>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="drawer-card drawer-card--provider drawer-card--empty localizejs">
+
+                                <div class="drawer-card__container">
+
+                                    <div class="drawer-card__back js-toggle-content">
+                                        <div class="icon_reply"></div>
+                                    </div>
+
+                                    <div class="drawer-card__main">
+                                        <div class="drawer-card__card">
+                                            <div class="drawer-card__userpic localizejs">
+
+                                                <div class="userpic userpic--drawer-card userpic--is-empty">
+                                                    <img src="images/default-user.jpg" alt="">
+                                                </div>
+
+                                            </div>
+
+                                            <button tyle="button" class="drawer-card__sub-action js-toggle-bookmark">
+                                                <div class="drawer-card__bookmark localizejs">
+                                                    <div class="icon_star"></div>
+                                                </div>
+                                            </button>
+
+                                            <div class="drawer-card__info js-toggle-content">
+                                                <div class="drawer-card__name localizejs"></div>
+                                                <div class="drawer-card__secondary-info localizejs"></div>
+                                            </div>
+                                        </div>
+
+
+                                        <footer class="drawer-card__footer">
+                                            <div class="drawer-card__footer-toggler js-toggle-footer localizejs"></div>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="drawer-card drawer-card--provider drawer-card--empty localizejs">
+
+                                <div class="drawer-card__container">
+
+                                    <div class="drawer-card__back js-toggle-content">
+                                        <div class="icon_reply"></div>
+                                    </div>
+
+                                    <div class="drawer-card__main">
+                                        <div class="drawer-card__card">
+                                            <div class="drawer-card__userpic">
+
+                                                <div class="userpic userpic--drawer-card userpic--is-empty">
+                                                    <img src="images/default-user.jpg" alt="">
+                                                </div>
+
+                                            </div>
+
+                                            <button tyle="button" class="drawer-card__sub-action js-toggle-bookmark">
+                                                <div class="drawer-card__bookmark">
+                                                    <div class="icon_star"></div>
+                                                </div>
+                                            </button>
+
+                                            <div class="drawer-card__info js-toggle-content">
+                                                <div class="drawer-card__name localizejs"></div>
+                                                <div class="drawer-card__secondary-info localizejs"></div>
+                                            </div>
+                                        </div>
+
+
+                                        <footer class="drawer-card__footer">
+                                            <div class="drawer-card__footer-toggler js-toggle-footer"></div>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="drawer-card drawer-card--provider drawer-card--empty localizejs">
+
+                                <div class="drawer-card__container">
+
+                                    <div class="drawer-card__back js-toggle-content">
+                                        <div class="icon_reply"></div>
+                                    </div>
+
+                                    <div class="drawer-card__main">
+                                        <div class="drawer-card__card">
+                                            <div class="drawer-card__userpic">
+
+                                                <div class="userpic userpic--drawer-card userpic--is-empty">
+                                                    <img src="images/default-user.jpg" alt="">
+                                                </div>
+
+                                            </div>
+
+                                            <button tyle="button" class="drawer-card__sub-action js-toggle-bookmark">
+                                                <div class="drawer-card__bookmark">
+                                                    <div class="icon_star"></div>
+                                                </div>
+                                            </button>
+
+                                            <div class="drawer-card__info js-toggle-content">
+                                                <div class="drawer-card__name localizejs"></div>
+                                                <div class="drawer-card__secondary-info localizejs"></div>
+                                            </div>
+                                        </div>
+
+
+                                        <footer class="drawer-card__footer">
+                                            <div class="drawer-card__footer-toggler js-toggle-footer"></div>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="drawer-card drawer-card--provider drawer-card--empty localizejs">
+
+                                <div class="drawer-card__container">
+
+                                    <div class="drawer-card__back js-toggle-content">
+                                        <div class="icon_reply"></div>
+                                    </div>
+
+                                    <div class="drawer-card__main">
+                                        <div class="drawer-card__card">
+                                            <div class="drawer-card__userpic">
+
+                                                <div class="userpic userpic--drawer-card userpic--is-empty">
+                                                    <img src="images/default-user.jpg" alt="">
+                                                </div>
+
+                                            </div>
+
+                                            <button tyle="button" class="drawer-card__sub-action js-toggle-bookmark">
+                                                <div class="drawer-card__bookmark">
+                                                    <div class="icon_star"></div>
+                                                </div>
+                                            </button>
+
+                                            <div class="drawer-card__info js-toggle-content">
+                                                <div class="drawer-card__name localizejs"></div>
+                                                <div class="drawer-card__secondary-info localizejs"></div>
+                                            </div>
+                                        </div>
+
+
+                                        <footer class="drawer-card__footer">
+                                            <div class="drawer-card__footer-toggler js-toggle-footer"></div>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-bind="visible: vm_hasSearchConditions">
+                            <div class="provider-search-empty__box">
+                                <div class="provider-search-empty__icon">
+                                    <span class="icon_user_clinician"></span>
+                                </div>
+                                <div class="provider-search-empty__title localizejs">No Providers Match <br>Your Current Search</div>
+                                <div class="provider-search-empty__subtitle localizejs">Please update your search and try again.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="provider-search-page__content localizejs" data-bind="visible: vm_isAllCliniciansMode,
+                           css:{provider-search-page__content--grid: vm_isGridMode}">
+                    <div data-bind="source: allCliniciansDS" data-template="clinicianCardDSTemplate">
+                    </div>
+
+                    <div class="provider-search-empty localizejs" data-bind="visible: vm_isAllCliniciansDSEmpty">
+                        <div class="provider-search-empty__box">
+                            <div class="provider-search-empty__icon">
+                                <span class="icon_user_clinician localizejs"></span>
+                            </div>
+                            <div class="provider-search-empty__title localizejs"><span class="localizejs">No Providers Match</span> <br><span class="localizejs">Your Current Search</span></div>
+                            <div class="provider-search-empty__subtitle localizejs">Please update your search and try again.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="changePatientAddressPopUpContainer"></div>
+        </div>
+    </div>

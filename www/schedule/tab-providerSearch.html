@@ -1,0 +1,156 @@
+<style>
+ .main-nav__toggle ins{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 20px;
+    height: 2.5px;
+    background-color: white !important;
+    transition: all .3s ease;
+}
+
+.main-nav__toggle ins:nth-of-type(1) {
+    top: 0px !important;
+}
+
+.main-nav__toggle ins:nth-of-type(2) {
+    top: 6px;
+}
+
+.main-nav__toggle ins:nth-of-type(3) {
+    top: 12px !important;
+}
+
+.is-main-nav .main-nav__toggle ins:nth-of-type(1) {
+    top: -2px !important;
+    left: -2px;
+    transform: rotate(45deg);
+}
+.header__brand {
+    margin-top: -7px;
+}
+svg {
+    vertical-align: text-bottom;
+}
+
+</style>
+
+<!--
+<nav class="main-nav" >
+    <a href="#" class="user-info user-info--main-nav">
+        <div ng-click="GoToPatientDetails(location,PatientImage,primaryPatientName,primaryPatientLastName,dob,primaryPatientGuardianName,primaryPatientId,true, 'sideMenuClick')" class="userpic userpic--white-border userpic--main-nav" ng-bind-html="drawImageSS(PatientImage,primaryPatientName,primaryPatientLastName)" style="border: 0px #fff solid;">
+
+        </div>
+
+        <div class="user-info__text">
+            <div class="user-info__name">
+                <span class="user-info__fname">{{primaryPatientName}} </span> <span class="user-info__lname">{{primaryPatientLastName}} </span>
+            </div>
+            <div class="user-info__info">
+                <span>{{primaryPatGender}}</span> • <span>{{dob | ageFilter}}</span>  • <span>{{mobilePhone}}</span>
+            </div>
+        </div>
+    </a>
+
+    <ul class="main-nav__list" style="font-size: 14px;">
+        <li><a ng-href="#/tab/userhome"><span> <i ng-bind-html="drawSVGCIcon('users')"></i></span>Patient List</a></li>
+        <li ng-click="GoToPatientDetails(location,PatientImage,primaryPatientName,primaryPatientLastName,dob,primaryPatientGuardianName,primaryPatientId,true, 'sideMenuClick')" ><a><span> <i ng-bind-html="drawSVGCIcon('clipboard')"></i></span>My Health</a></li>
+        <li ng-click="GoToPatientDetails(location,PatientImage,primaryPatientName,primaryPatientLastName,dob,primaryPatientGuardianName,primaryPatientId,true, 'sideMenuClickApoointments')"><a><span><i ng-bind-html="drawSVGCIcon('calendar')"></i></span>My Appointments</a></li>
+        <li ng-click="GoToPatientDetails(location,PatientImage,primaryPatientName,primaryPatientLastName,dob,primaryPatientGuardianName,primaryPatientId,true, 'tab.consultations')"><a><span><i ng-bind-html="drawSVGCIcon('health_card')"></i></span>My Consultations</a></li>
+        <li ng-click="goTOSchedule()"><a><span class="icon_search-users"></span>Self Schedule</a></li>
+        <li ng-click="ClearRootScope()" style="font-size: 1.0em;" ><a><span class="ion-power" style="font-size: 1.4em; padding-right: 20px;"></span>Logout</a></li>
+    </ul>
+    <div class="main-nav__bottom-aligner main-nav__bottom-aligner--patient"></div>
+
+       <a class="main-nav__toc" ng-click="sideMenuHospitallink()"  _onclick="window.open('https://docyourway.snap-stage.com/Main/#/UserTerms', '_system', 'location=yes'); return false;">Terms &amp; Conditions</a>
+</nav> -->
+
+<nav class="main-nav" style="" >
+    <a href="#" class="user-info user-info--main-nav">
+        <div ng-click="GoToPatientDetails(location,PatientImage,primaryPatientName,primaryPatientLastName,dob,primaryPatientGuardianName,primaryPatientId,true, 'sideMenuClick')" class="userpic userpic--white-border userpic--main-nav" ng-bind-html="drawImageSS(PatientImage,primaryPatientName,primaryPatientLastName)" style="border: 2px #fff solid;">
+
+        </div>
+
+        <div class="user-info__text">
+            <div class="user-info__name">
+                <span class="user-info__fname">{{primaryPatientName}} </span> <span class="user-info__lname">{{primaryPatientLastName}} </span>
+            </div>
+            <div class="user-info__info">
+                <span class="localizejs">{{primaryPatGender}}</span> • <span>{{dob | ageFilter}}</span><span class="localizejs">{{dob | ageYearsStringFilter}}</span><span>{{dob | ageMonthFilter}}</span> <span>{{dob | ageDayFilter}}</span>• <span>{{mobilePhone}}</span>
+            </div>
+        </div>
+    </a>
+
+    <ul class="main-nav__list" >
+        <li><a ng-href="#/tab/userhome"><span> <i ng-bind-html="drawSVGCIcon('users')"></i></span><span class="localizejs">Patient List</span></a></li>
+        <li ng-click="GoToPatientDetails(location,PatientImage,primaryPatientName,primaryPatientLastName,dob,primaryPatientGuardianName,primaryPatientId,true, 'sideMenuClick')" ><a><span> <i ng-bind-html="drawSVGCIcon('clipboard')"></i></span><span class="localizejs">My Health</span></a></li>
+        <li ng-click="GoToPatientDetails(location,PatientImage,primaryPatientName,primaryPatientLastName,dob,primaryPatientGuardianName,primaryPatientId,true, 'sideMenuClickApoointments')"><a><span><i ng-bind-html="drawSVGCIcon('calendar')"></i></span><span class="localizejs">My Appointments</span></a></li>
+        <li ng-click="GoToPatientDetails(location,PatientImage,primaryPatientName,primaryPatientLastName,dob,primaryPatientGuardianName,primaryPatientId,true, 'tab.consultations')"><a><span><i ng-bind-html="drawSVGCIcon('health_card')"></i></span><span class="localizejs">My Consultations</span></a></li>
+        <li ng-if="onSSAvailability == 'on'" ng-click="goTOSchedule()"><a><span class="icon_search-users"></span><span class="localizejs">Self Schedule</span></a></li>
+        <!-- <li ng-click="ClearRootScope()" style="font-size: 1.0em;" ><a><span class="ion-power" style="font-size: 1.4em; padding-right: 20px;"></span><span class="localizejs">Logout</span></a></li> -->
+        <li ng-click="ClearRootScope()"><a><span style="top: -4px !important;position: relative;" class=" localizejs">
+                <i class="iconfontSVG">
+                        <svg class="icon-log-out">
+                           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="symbol-defs.svg#icon-log-out"></use>
+                        </svg>
+                     </i>
+        </span><span style="top: -4px !important;position: relative;" class="localizejs">Logout</span></a></li>
+    </ul>
+    <div class="main-nav__bottom-aligner main-nav__bottom-aligner--patient"></div>
+    <!-- <a  class="main-nav__toc localizejs"  ng-click="sideMenuHospitallink()"  _onclick="window.open('https://docyourway.snap-stage.com/Main/#/UserTerms', '_system', 'location=yes'); return false;">Terms &amp; Conditions</a> -->
+    <a  class="main-nav__toc localizejs" ng-click="doGetTermsandCondition('tab.registerTerms', 'tab.registerStep1');" >Terms &amp; Conditions</a>
+</nav>
+
+<div class="wrapper page" >
+  <header class="header header__patient-ss" data-bind="class:{header--hide-patient:isConsultHeader}" style="background-color:{{brandColor}};border-color:{{brandColor}}; height: 65px; padding-top: 20px;">
+      <div class="row">
+          <div class="header__menu">
+              <a href="#" class="main-nav__toggle js-toggle-main-nav" data-bind="click:onNavClick">
+                  <ins></ins>
+                  <ins></ins>
+                  <ins></ins>
+              </a>
+          </div>
+
+          <div class="header__brand">
+              <!--<h1 data-bind="text:brandName, attr: {title: brandName }" title="EMERALD QA HEALTHCARE GROUP"></h1>-->
+              <h1>{{brandName}}</h1>
+          </div>
+      </div>
+  </header>
+
+  <footer1 class="header header__patient-ss" data-bind="class:{header--hide-patient:isConsultHeader}">
+      <div class="row" data-bind="invisible:isHideSubHeader">
+          <div class="header-bar">
+              <ul class="page-toggle hide-mobile">
+                  <li>
+                      <h1 class="localizejs" data-bind="text: moduleTitle">Provider</h1>
+                  </li>
+                  <li class="page-toggle__module">
+                      <h1 class="localizejs" data-bind="text: subModuleTitle">All providers</h1>
+                  </li>
+              </ul>
+
+              <ul class="menu-toggle">
+                  <li id="searchTab" class="menu-toggle__navigation"  data-bind="css:{is-active: vm_isSearchBarActive}">
+                      <a class="js-toggle-menu" data-bind="click: vm_toggleSearchAndFilter"><span class="icon_list"></span></a>
+                  </li>
+
+                  <li id="myProvider" data-bind="css:{is-active: isFavoriteCliniciansMode}">
+                      <a ng-click="getDetails('favorite')" _href="#/tab/providerSearch/favorite" class="localizejs">My Providers</a>
+                  </li>
+
+                  <li id="allProvider" data-bind="css:{is-active: isAllCliniciansMode}" class="is-active">
+                      <a ng-click="getDetails('all')" _href="#/tab/providerSearch/all" class="localizejs">All Providers</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </footer1>
+
+ <div class="schedular-continer">
+
+  </div>
+</div>
+  </script>

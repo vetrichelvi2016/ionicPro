@@ -1,0 +1,20 @@
+{
+  "name": "SelfSchedule",
+  "app_id": "65e18322",
+  "gulpStartupTasks": [
+    "sass",
+    "watch",
+    "less"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "scss/**/*",
+    "less/**/*.*"
+  ],
+  "type": "ionic1",
+  "integrations": {
+    "cordova": {},
+    "gulp": {}
+  }
+}

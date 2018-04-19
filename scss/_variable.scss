@@ -1,0 +1,80 @@
+/* Empty. Add your own Variable CSS if you like */
+
+
+$Flamingo:                           #DD472D; //#F04E29;
+$Altoa:                         	 #CDCACA;
+$Camouflage_Green:                   #78906C;
+$Feijoa:                            #A2D28A;
+$Feijoa1:                            #A2D28A;
+$Silver_Chalice:                    #9D9D9D;
+$Tundora:							#484848;
+$TundoraPWD:						#898989;
+$Shiraz:							#A80532;
+$Mercury:							#E6E6E6;
+$Viking:							#4FC0DA;
+$Sun:								#EEA82D; //patient detail page
+$pinkPipe:        					#A80532;
+$MineShaft:							#383838; //patient calendar page
+$Bridesmaid:						#FEEFE8;
+$Nobel:								#B3B3B3;
+$Silver:							#C2C2C2; //add health page
+$Emperor:							#555555; //plan details
+$Scorpion:							#5C5C5C;
+$Scooter:							#39BAD9;
+$fontFamily_black_italic: 			'Glober Black Italic';
+$fontFamily_black: 					'Glober Black';
+$fontFamily_bold_italic: 			'Glober Bold Italic';
+$fontFamily_bold: 					'Glober Bold';
+$fontFamily_book_italic: 			'Glober Book Italic';
+$fontFamily_book: 					'Glober Book';
+$fontFamily_heavy_italic: 			'Glober Heavy Italic';
+$fontFamily_heavy: 					'Glober Heavy';
+$fontFamily_light_italic: 			'Glober Light Italic';
+$fontFamily_light: 					'Glober Light';
+$fontFamily_regular_italic: 		'Glober Regular Italic';
+$fontFamily_regular: 				'Glober Regular';
+$fontFamily_semibold_italic: 		'Glober SemiBold Italic';
+$fontFamily_semibold: 				'Glober SemiBold';
+$fontFamily_thin_italic: 			'Glober Thin Italic';
+$fontFamily_thin: 					'Glober Thin';
+$fontFamily_xBold_italic: 			'Glober xBold Italic';
+$fontFamily_xBold: 					'Glober xBold';
+
+
+@mixin font($fontFamily, $fontWeight, $fontSize) {
+    font-family: $fontFamily;
+    font-weight: $fontWeight;
+	font-size: $fontSize;
+}
+@mixin measurement($padding, $margin, $width, $height) {
+	padding: $padding;
+	margin: $margin;
+	width: $width;
+	height: $height;
+}
+@mixin buttons($background-color, $font-weight, $border-radius, $font-size, $min-height ) {
+	background-color : $background-color;
+	border-color: $background-color;
+	background-image: linear-gradient(0deg, $background-color, $background-color 50%, transparent 50%);
+	font-weight: normal;
+	border-radius: $border-radius;
+	font-size: $font-size;
+	min-height:$min-height;
+	text-decoration: none;
+	font-family: $fontFamily_bold;
+}
+
+@mixin pad($top,$right,$bottom,$left){
+ padding-top: $top;
+ padding-right: $right;
+ padding-bottom: $bottom;
+ padding-left: $left;
+
+}
+@mixin margin($top,$right,$bottom,$left){
+ margin-top: $top;
+ margin-right: $right;
+ margin-bottom: $bottom;
+ margin-left: $left;
+
+}

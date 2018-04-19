@@ -1,0 +1,65 @@
+<ion-header-bar align-title="left" class="bar-positiveHomeUser" style="background-color:{{brandColor}};border-color:{{brandColor}};{{backgroundimage}};">
+   <div class="buttons" style="{{ReportScreen}};">
+      <button class="button button-clear {{concernListDoneStyle}} localizejs" style="{{PrimaryConcernPopupDone}};" ng-click="closeMissedView()">Done</button>
+   </div>
+   <h1 class="{{title_patient}} {{HeaderList}} {{intakeTittle}} ReportTittle localizejs" style="{{reportTitletop}};">Consult Report</h1>
+   <div class="bar bar-subheaderHomeUser patient_subHeader calendar_subHeader_height" style="{{patient_subHeaderTopMove}}">
+      <div class="calendar_subHeader">
+         <div class="subHeader_image" ng-bind-html="drawImage(PatientImageSelectUser,PatientFirstName,PatientLastName)"></div>
+         <div class="subHeader_content-{{deviceName}} ellipsis">
+            <div class="ellipsis subHeader_content_name">
+               <span class="PatintHeaderFontStyle patientName ellipsis">{{PatientFirstName}}</span>
+               <span class="PatintHeaderFontStyleInner patientLastName ellipsis">{{PatientLastName}}</span>
+            </div>
+            <div class="subHeader_content_age PatintHeaderFontStyleSub ellipsis"><span class="localizejs" ng-if="userGender != ''">{{userGender}}</span> . <span>{{userDOB| ageFilter}}</span><span class="localizejs">{{userDOB | ageYearsStringFilter}}</span><span>{{userDOB | ageMonthFilter}}</span> <span>{{userDOB | ageDayFilter}}</span> <span class="localizejs" ng-if="primaryPatientId != patientId"> . {{patRelationShip}}</span></div>
+         </div>
+      </div>
+   </div>
+</ion-header-bar>
+<ion-view title="Appointment Details">
+   <ion-content class="paticoncontent">
+      <div class="list">
+         <a class="item item-avatar patavatar">
+            <img ng-src="{{profileImagePath}}" class="patimage">
+            <p class="pathead localizejs">With</p>
+            <h2 class="appfname"><span >{{reportDoctorFirstName}}</h2>
+            <span class="appfloat"><i class="icon ion-chevron-right "></i></span>
+            </p>
+            <p class="patage localizejs">{{gender}} </p>
+         </a>
+         <ion-item class="ionitem contalign" >
+            <div class="item item-text-wrap textwrap">
+               <div class="datecontent">
+                  <h2 class="fdate"><span class="fname ftime">{{consultationDate |date: "hh:mm"}}{{consultationDate | date: "a"}}</span> </h2>
+                  <p class="fday">{{consultationDate| date: "EEEE, MMMM dd, yyyy"}}</p>
+               </div>
+            </div>
+         </ion-item>
+         <a class="item" style="border-bottom:none; pointer-events: none;">
+            <div class="row seccontent" >
+               <div class="col col-10 patcol10">1</div>
+               <div class="col col-90 ">
+                  <p class="parafont"><b class="localizejs">Primary Concern</b></p>
+                  <p class="pfontsize localizejs">{{reportScreenPrimaryConcern}}</p>
+               </div>
+            </div>
+            <br>
+            <div class="row seccontentone">
+               <div class="col col-10 patcol10">2</div>
+               <div class="col col-90 ">
+                  <p class="parafont"><b class="localizejs">Secondary Concern</b></p>
+                  <p class="pfontsize localizejs">{{reportScreenSecondaryConcern}}</p>
+               </div>
+            </div>
+            <br>
+            <div class="row seccontentone" >
+               <div class="col col-10 patcol10">a</div>
+               <div class="col col-90 ">
+                  <p class="parafont"><b class="localizejs">Notes</b></p>
+                  <p class="pfontsize" style="position: relative; top: 8px;" id="appointNotes" > </p>
+               </div>
+            </div>
+         </a>
+      </div>
+   </ion-content>
+</ion-view>
